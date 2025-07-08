@@ -24,20 +24,20 @@ MarketPulse is a web-based dashboard that helps investors quickly assess whether
 │                         CLIENT LAYER                                │
 │                                                                     │
 │  ┌─────────────────────────────┐        ┌────────────────────────┐  │
-│  │    React Frontend App        │        │    Email Notifications │  │
+│  │    React Frontend App       │        │    Email Notifications │  │
 │  │    (Cloudflare Pages)       │        │                        │  │
-│  └───────────────┬─────────────┘        └────────────┬───────────┘  │
+│  └──────────────┬──────────────┘        └─────────────┬──────────┘  │
 └─────────────────┬─────────────────────────────────────┬─────────────┘
                   │                                     │
                   ▼                                     │
 ┌─────────────────────────────────────────────┐         │
 │               API GATEWAY                   │         │
-│          (Cloudflare/Fly.io)               │         │
+│          (Cloudflare/Fly.io)                │         │
 └───────────────────┬─────────────────────────┘         │
                     │                                   │
                     ▼                                   │
-┌───────────────────────────────────────────────────────┼───────────────┐
-│                         APPLICATION LAYER              │              │
+┌───────────────────────────────────────────────────────┼──────────────┐
+│                         APPLICATION LAYER             │              │
 │                                                       │              │
 │  ┌─────────────────────────┐    ┌────────────────────┐│              │
 │  │   FastAPI Backend       │    │                    ││              │
@@ -54,9 +54,9 @@ MarketPulse is a web-based dashboard that helps investors quickly assess whether
 │  │  │  GPT Integration│    │    │ │Email Generator ├─┼┘              │
 │  │  └─────────────────┘    │    │ └────────────────┘ │               │
 │  └─────────────┬───────────┘    └────────────────────┘               │
-└─────────────────┼─────────────────────────────────────────────────────┘
-                  │
-                  ▼
+└────────────────┼─────────────────────────────────────────────────────┘
+                 │
+                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
 │                         DATA LAYER                                  │
 │                                                                     │
@@ -92,8 +92,8 @@ The system architecture shows the separation of client, application, and data la
                          └────────────┬─────────────┘
                                       │
                                       ▼
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│                             Data Collection Process                              │
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                             Data Collection Process                             │
 │                                                                                 │
 │  ┌────────────────────┐     ┌────────────────────┐     ┌─────────────────────┐  │
 │  │  Fetch Stock Data  │────▶│  Fetch VIX Data    │────▶│ Fetch Economic Data │  │
@@ -104,9 +104,9 @@ The system architecture shows the separation of client, application, and data la
 │  │Fetch Liquidity Data │◀───│ Fetch Valuation Data│◀───────────┘                │
 │  │(M2, Fed Balance)    │    │ (P/E Ratios, EPS)   │                             │
 │  └──────────┬──────────┘    └─────────────────────┘                             │
-└────────────┬────────────────────────────────────────────────────────────────────┘
-             │
-             ▼
+└─────────────┬────────────────-──────────────────────────────────────────────────┘
+              │
+              ▼
 ┌────────────────────────┐
 │ Store Raw Market Data  │
 │    in Database         │
@@ -130,15 +130,15 @@ The system architecture shows the separation of client, application, and data la
 │                       │                                       │
 │                       ▼                                       │
 │               ┌────────────────┐                              │
-│               │Overall Signal  │                              │
-│               │Calculation     │                              │
+│               │ Overall Signal │                              │
+│               │ Calculation    │                              │
 │               └───────┬────────┘                              │
 └───────────────────────┼───────────────────────────────────────┘
                         │
                         ▼
               ┌───────────────────┐
-              │ Store Signal      │
-              │ Results in DB     │
+              │  Store Signal     │
+              │  Results in DB    │
               └─────────┬─────────┘
                         │
                         ▼
