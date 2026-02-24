@@ -194,8 +194,10 @@ The data flow diagram illustrates how information moves through the system, from
 
 ### Running Locally
 ```bash
-# Start backend and frontend services
-docker-compose up
+cd frontend && npm install
+cd ../backend && pip install -r requirements.txt
+cd ..
+docker compose up --build
 ```
 
 ## License

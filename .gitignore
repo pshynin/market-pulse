@@ -1,1 +1,10 @@
 .idea/
+# Python-related files
+backend/__pycache__/
+backend/api/__pycache__/
+backend/db/__pycache__/
+backend/services/__pycache__/
+
+# Node.js-related files
+frontend/node_modules/
+frontend/package-lock.json
