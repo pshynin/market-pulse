@@ -200,5 +200,11 @@ cd ..
 docker compose up --build
 ```
 
+### Lint and Format
+```bash
+pip3 install autopep8
+autopep8 --in-place --aggressive --recursive ./backend
+```
+
 ## License
 MIT
