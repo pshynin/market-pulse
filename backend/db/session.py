@@ -12,6 +12,8 @@ engine = create_engine(settings.SQLALCHEMY_DATABASE_URI)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # DB dependency for FastAPI endpoints
+
+
 def get_db():
     db = SessionLocal()
     try:

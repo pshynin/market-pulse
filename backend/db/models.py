@@ -5,9 +5,10 @@ from datetime import datetime
 
 Base = declarative_base()
 
+
 class MarketData(Base):
     __tablename__ = "market_data"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     timestamp = Column(DateTime, default=datetime.utcnow, index=True)
     spy_price = Column(Float)
@@ -21,9 +22,10 @@ class MarketData(Base):
     ism_value = Column(Float, nullable=True)
     raw_data = Column(JSON, nullable=True)  # Store raw API response
 
+
 class SignalResult(Base):
     __tablename__ = "signal_results"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     timestamp = Column(DateTime, default=datetime.utcnow, index=True)
     market_breadth_signal = Column(String(10))  # Green, Yellow, Red
@@ -33,15 +35,16 @@ class SignalResult(Base):
     macro_signal = Column(String(10))
     overall_signal = Column(String(10))
     market_data_id = Column(Integer, ForeignKey("market_data.id"))
-    
+
     market_data = relationship("MarketData")
+
 
 class AIInsight(Base):
     __tablename__ = "ai_insights"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     timestamp = Column(DateTime, default=datetime.utcnow, index=True)
     content = Column(Text)
     signal_result_id = Column(Integer, ForeignKey("signal_results.id"))
-    
+
     signal_result = relationship("SignalResult")

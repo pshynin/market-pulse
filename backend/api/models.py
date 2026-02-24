@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
+
 class SignalResponse(BaseModel):
     id: int
     timestamp: datetime
@@ -12,18 +13,20 @@ class SignalResponse(BaseModel):
     macro_signal: str
     overall_signal: str
     market_data_id: int
-    
+
     class Config:
         orm_mode = True
+
 
 class InsightResponse(BaseModel):
     id: int
     timestamp: datetime
     content: str
     signal_result_id: int
-    
+
     class Config:
         orm_mode = True
+
 
 class MarketDataResponse(BaseModel):
     id: int
@@ -37,6 +40,6 @@ class MarketDataResponse(BaseModel):
     fed_balance: Optional[float] = None
     gdp_value: Optional[float] = None
     ism_value: Optional[float] = None
-    
+
     class Config:
         orm_mode = True

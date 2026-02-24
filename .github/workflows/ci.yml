@@ -1,0 +1,41 @@
+name: Python Code Quality
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          pip install flake8 pylint bandit mypy black isort
+
+      - name: Run Flake8
+        run: flake8 .
+
+      - name: Run PyLint
+        run: pylint market-pulse/
+
+      - name: Run Bandit
+        run: bandit -r market-pulse/
+
+      - name: Run Mypy
+        run: mypy market-pulse/
+
+      - name: Run Black
+        run: black --check .
+
+      - name: Run isort
+        run: isort --check-only .
